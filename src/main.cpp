@@ -1,7 +1,8 @@
-#include "ball.h"
-#include "computer.h"
-#include "paddle.h"
 #include <raylib.h>
+
+#include "ball.hpp"
+#include "computer.hpp"
+#include "paddle.hpp"
 
 Color Green = Color{38, 185, 154, 255};
 Color Dark_Green = Color{20, 160, 133, 255};
@@ -16,9 +17,9 @@ Paddle player;
 Computer computer;
 
 int main() {
-
   const int screen_width = 1080;
   const int screen_height = 640;
+
   InitWindow(screen_width, screen_height, "Pong Game!");
   SetTargetFPS(60);
 
@@ -63,16 +64,16 @@ int main() {
     ClearBackground(Dark_Green);
     DrawRectangle(screen_width / 2, 0, screen_width / 2, screen_height, Green);
     DrawCircle(screen_width / 2, screen_height / 2, 150, Light_Green);
-    DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, WHITE);
+    DrawLine(screen_width / 2, 0, screen_width / 2, screen_height, Light_Green);
+    DrawRectangle(0, 0, 120, 35, WHITE);
+    DrawFPS(10, 10);
 
     ball.Draw();
     player.Draw();
     computer.Draw();
 
-    DrawText(TextFormat("%i", computer_score), screen_width / 4 - 20, 20, 50,
-             WHITE);
-    DrawText(TextFormat("%i", player_score), 3 * screen_width / 4 - 20, 20, 50,
-             WHITE);
+    DrawText(TextFormat("%i", computer_score), screen_width / 4 - 20, 20, 50, WHITE);
+    DrawText(TextFormat("%i", player_score), 3 * screen_width / 4 - 20, 20, 50, WHITE);
 
     EndDrawing();
   }

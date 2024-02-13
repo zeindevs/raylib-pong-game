@@ -1,11 +1,11 @@
-#ifndef H_PADDLE
-#define H_PADDLE
+#pragma once
 
-#include "ball.h"
-#include "raylib.h"
+#include <raylib.h>
+
+#include "ball.hpp"
 
 class Paddle {
-public:
+ public:
   float x, y;
   float width, height;
   int speed;
@@ -16,5 +16,3 @@ public:
   void LimitMovement();
   bool CheckCollision(Ball *ball);
 };
-
-#endif // H_PADDLE

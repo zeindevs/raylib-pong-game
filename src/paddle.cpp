@@ -1,10 +1,10 @@
-#include "paddle.h"
-#include "ball.h"
-#include "raylib.h"
+#include "paddle.hpp"
 
-void Paddle::Draw() {
-  DrawRectangleRounded(Rectangle{x, y, width, height}, 0.8, 0, color);
-}
+#include <raylib.h>
+
+#include "ball.hpp"
+
+void Paddle::Draw() { DrawRectangleRounded(Rectangle{x, y, width, height}, 0.8, 0, color); }
 
 void Paddle::Update() {
   if (IsKeyDown(KEY_UP)) {
@@ -13,6 +13,14 @@ void Paddle::Update() {
   if (IsKeyDown(KEY_DOWN)) {
     y = y + speed;
   }
+
+  if (IsGestureDetected(GESTURE_DRAG) && GetMouseY() < GetScreenHeight() / 2) {
+    y = y - speed;
+  }
+  if (IsGestureDetected(GESTURE_DRAG) && GetMouseY() > GetScreenHeight() / 2) {
+    y = y + speed;
+  }
+
   LimitMovement();
 }
 
@@ -26,6 +34,8 @@ void Paddle::LimitMovement() {
 }
 
 bool Paddle::CheckCollision(Ball *ball) {
-  return CheckCollisionCircleRec(Vector2{ball->x, ball->y}, ball->radius,
-                                 Rectangle{x, y, width, height});
+  return CheckCollisionCircleRec(
+      Vector2{ball->x, ball->y},
+      ball->radius,
+      Rectangle{x, y, width, height});
 }

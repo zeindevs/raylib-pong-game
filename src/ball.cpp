@@ -1,5 +1,6 @@
-#include "ball.h"
-#include "raylib.h"
+#include "ball.hpp"
+
+#include <raylib.h>
 
 void Ball::Draw() { DrawCircle(x, y, radius, color); }
 
@@ -22,7 +23,7 @@ void Ball::Update(int *player_score, int *computer_score) {
 }
 
 void Ball::ResetBall() {
-  x = int(GetScreenHeight() / 2);
+  x = int(GetScreenWidth() / 2);
   y = int(GetScreenHeight() / 2);
 
   int speed_choices[2] = {-1, 1};

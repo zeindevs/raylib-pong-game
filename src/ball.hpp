@@ -1,10 +1,8 @@
-#ifndef H_BALL
-#define H_BALL
-
+#pragma once
 #include "raylib.h"
 
 class Ball {
-public:
+ public:
   float x, y;
   int speed_x, speed_y;
   int radius;
@@ -14,5 +12,3 @@ public:
   void Update(int *player_score, int *computer_score);
   void ResetBall();
 };
-
-#endif // H_BALL

@@ -1,4 +1,4 @@
-#include "computer.h"
+#include "computer.hpp"
 
 void Computer::Update(int ball_y) {
   if (y + height / 2 > ball_y) {
